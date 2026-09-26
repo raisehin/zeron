@@ -37,3 +37,11 @@ jobs:
 
     - name: Run tests
       run: cargo test --workspace --verbose
+
+    - name: Upload binary
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: zeron-binary
+        path: target/debug/zeron
+        if-no-files-found: warn
